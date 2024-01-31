@@ -19,7 +19,7 @@ class TailwindUiThemeServiceProvider extends ServiceProvider
 
     public function registerConfig() : self
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/rapidez-tailwind-ui-theme.php', 'rapidez.tailwind-ui-theme');
+        $this->mergeConfigFrom(__DIR__.'/../config/rapidez/tailwind-ui-theme.php', 'rapidez.tailwind-ui-theme');
         $this->mergeConfigFrom(__DIR__.'/../config/statamic/eloquent-driver.php', 'statamic-eloquent-driver');
         $this->mergeConfigFrom(__DIR__.'/../config/statamic/editions.php', 'statamic.editions');
         $this->mergeConfigFrom(__DIR__.'/../config/statamic/routes.php', 'statamic.routes');
