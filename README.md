@@ -6,6 +6,16 @@
 composer require rapidez/tailwind-ui-theme
 ```
 
+After requiring the package you need to run the install script.
+```
+php artisan tailwind-ui-theme:install
+```
+
+When the installation is done, you need to run `php artisan migrate` to generate the Statamic tables.
+When the migration is completed you can create an account by running `php please make:user`.
+
+
+
 ## Configuration
 
 You can publish the config with:

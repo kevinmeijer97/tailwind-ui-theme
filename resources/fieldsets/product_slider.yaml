@@ -1,0 +1,30 @@
+title: 'Product slider'
+fields:
+  -
+    handle: title
+    field:
+      input_type: text
+      antlers: false
+      display: Title
+      type: text
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      localizable: true
+  -
+    handle: products
+    field:
+      mode: default
+      resource: product
+      create: false
+      display: Products
+      type: has_many
+      icon: has_many
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      localizable: true
+      replicator_preview: true
+      reorderable: false
+      hide_display: false

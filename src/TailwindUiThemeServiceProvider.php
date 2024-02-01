@@ -3,9 +3,14 @@
 namespace Rapidez\TailwindUiTheme;
 
 use Illuminate\Support\ServiceProvider;
+use Rapidez\TailwindUiTheme\Commands\InstallCommand;
 
 class TailwindUiThemeServiceProvider extends ServiceProvider
 {
+    protected $commands = [
+        InstallCommand::class,
+    ];
+
     public function register()
     {
         $this->registerConfig()
@@ -14,16 +19,24 @@ class TailwindUiThemeServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->bootPublishables();
+        $this->bootPublishables()
+            ->bootCommands();
+    }
+
+    public function bootCommands(): self
+    {
+        $this->commands($this->commands);
+        return $this;
     }
 
     public function registerConfig() : self
     {
         $this->mergeConfigFrom(__DIR__.'/../config/rapidez/tailwind-ui-theme.php', 'rapidez.tailwind-ui-theme');
-        $this->mergeConfigFrom(__DIR__.'/../config/statamic/eloquent-driver.php', 'statamic-eloquent-driver');
+        $this->mergeConfigFrom(__DIR__.'/../config/statamic/eloquent-driver.php', 'statamic.eloquent-driver');
         $this->mergeConfigFrom(__DIR__.'/../config/statamic/editions.php', 'statamic.editions');
         $this->mergeConfigFrom(__DIR__.'/../config/statamic/routes.php', 'statamic.routes');
         $this->mergeConfigFrom(__DIR__.'/../config/statamic/users.php', 'statamic.users');
+        $this->mergeConfigFrom(__DIR__.'/../config/auth.php', 'auth');
 
         return $this;
     }
@@ -39,16 +52,14 @@ class TailwindUiThemeServiceProvider extends ServiceProvider
     public function bootPublishables() : self
     {
         $this->publishes([
-            __DIR__.'/../resources/core-overwrites' => resource_path('views/vendor/rapidez'),
-        ], 'core-overwrites');
-
-        $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/rapidez-tut'),
-        ], 'views');
+            __DIR__.'/../resources/core-overwrites' => resource_path('views/vendor/rapidez'),
+        ], 'rapidez-tailwind-ui-theme-views');
 
         $this->publishes([
             __DIR__.'/../config/' => config_path(),
-        ], 'config');
+            __DIR__.'/../config/auth.php' => config_path('auth.php'),
+        ], 'rapidez-tailwind-ui-theme-config');
 
         return $this;
     }

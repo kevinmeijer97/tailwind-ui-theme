@@ -30,7 +30,7 @@ return [
     ],
 
     'collection_trees' => [
-        'driver' => 'file',
+        'driver' => 'eloquent',
         'model'  => \Statamic\Eloquent\Structures\TreeModel::class,
         'tree'   => \Statamic\Eloquent\Structures\CollectionTree::class,
     ],
@@ -53,7 +53,7 @@ return [
     ],
 
     'global_set_variables' => [
-        'driver' => 'file',
+        'driver' => 'eloquent',
         'model'  => \Statamic\Eloquent\Globals\VariablesModel::class,
     ],
 
@@ -63,7 +63,7 @@ return [
     ],
 
     'navigation_trees' => [
-        'driver' => 'file',
+        'driver' => 'eloquent',
         'model'  => \Statamic\Eloquent\Structures\TreeModel::class,
         'tree'   => \Statamic\Eloquent\Structures\NavTree::class,
     ],
