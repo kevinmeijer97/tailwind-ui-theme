@@ -38,6 +38,14 @@ class InstallCommand extends Command
             '--ansi',
         ]);
 
+        $this->call('vendor:publish', [
+            '--tag' => 'rapidez-tailwind-ui-theme-collections',
+        ]);
+
+        $this->call('vendor:publish', [
+            '--tag' => 'rapidez-tailwind-ui-theme-blueprints',
+        ]);
+
         $this->info('Done 🚀');
     }
 

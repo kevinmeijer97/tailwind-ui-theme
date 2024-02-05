@@ -25,5 +25,5 @@ sections:
           visibility: visible
           localizable: true
       -
-        import: page_builder
+        import: tailwind-ui-theme::page_builder
 title: Products

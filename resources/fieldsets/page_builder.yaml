@@ -16,20 +16,20 @@ fields:
           display: Content
           fields:
             -
-              import: content
+              import: tailwind-ui-theme::content
         product_slider:
           display: 'Product slider'
           fields:
             -
-              import: product_slider
+              import: tailwind-ui-theme::product_slider
         image:
           display: Image
           fields:
             -
-              import: image
+              import: tailwind-ui-theme::image
         form:
           display: Form
           fields:
             -
-              import: form
+              import: tailwind-ui-theme::form
       localizable: true

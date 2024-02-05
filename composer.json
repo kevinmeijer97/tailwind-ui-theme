@@ -13,6 +13,7 @@
             "role": "Developer"
         }
     ],
+    "type": "statamic-addon",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
@@ -35,15 +36,14 @@
         }
     },
     "extra": {
+        "statamic": {
+            "name": "Rapidez Tailwind UI Theme",
+            "description": "Rapidez Tailwind UI Theme addon"
+        },
         "laravel": {
             "providers": [
                 "Rapidez\\TailwindUiTheme\\TailwindUiThemeServiceProvider"
             ]
         }
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "@php artisan statamic:install --ansi"
-        ]
     }
 }

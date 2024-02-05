@@ -2,10 +2,10 @@
 
 namespace Rapidez\TailwindUiTheme;
 
-use Illuminate\Support\ServiceProvider;
 use Rapidez\TailwindUiTheme\Commands\InstallCommand;
+use Statamic\Providers\AddonServiceProvider;
 
-class TailwindUiThemeServiceProvider extends ServiceProvider
+class TailwindUiThemeServiceProvider extends AddonServiceProvider
 {
     protected $commands = [
         InstallCommand::class,
@@ -17,8 +17,10 @@ class TailwindUiThemeServiceProvider extends ServiceProvider
             ->registerViews();
     }
 
-    public function boot()
+    public function bootAddon()
     {
+        parent::boot();
+
         $this->bootPublishables()
             ->bootCommands();
     }
@@ -60,6 +62,14 @@ class TailwindUiThemeServiceProvider extends ServiceProvider
             __DIR__.'/../config/' => config_path(),
             __DIR__.'/../config/auth.php' => config_path('auth.php'),
         ], 'rapidez-tailwind-ui-theme-config');
+
+        $this->publishes([
+            __DIR__.'/../resources/blueprints/' => resource_path('blueprints'),
+        ], 'rapidez-tailwind-ui-theme-blueprints');
+
+        $this->publishes([
+            __DIR__.'/../content/' => base_path('content'),
+        ], 'rapidez-tailwind-ui-theme-collections');
 
         return $this;
     }

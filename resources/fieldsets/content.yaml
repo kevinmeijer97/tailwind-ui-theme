@@ -47,5 +47,5 @@ fields:
           display: Image
           fields:
             -
-              import: image
+              import: tailwind-ui-theme::image
       localizable: true

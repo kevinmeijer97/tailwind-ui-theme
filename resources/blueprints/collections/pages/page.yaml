@@ -12,7 +12,7 @@ tabs:
               validate:
                 - required
           -
-            import: page_builder
+            import: tailwind-ui-theme::page_builder
   sidebar:
     display: Sidebar
     sections:
@@ -34,5 +34,5 @@ tabs:
               listable: false
               localizable: true
           -
-            import: meta_data
+            import: tailwind-ui-theme::meta_data
 title: Page
