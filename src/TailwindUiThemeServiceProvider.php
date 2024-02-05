@@ -2,8 +2,10 @@
 
 namespace Rapidez\TailwindUiTheme;
 
+use Illuminate\Support\Facades\Route;
 use Rapidez\TailwindUiTheme\Commands\InstallCommand;
 use Statamic\Providers\AddonServiceProvider;
+use Statamic\Http\Controllers\FrontendController;
 
 class TailwindUiThemeServiceProvider extends AddonServiceProvider
 {
@@ -22,12 +24,23 @@ class TailwindUiThemeServiceProvider extends AddonServiceProvider
         parent::boot();
 
         $this->bootPublishables()
+            ->bootRoutes()
             ->bootCommands();
+    }
+
+    public function bootRoutes(): self
+    {
+        $this->registerWebRoutes(function () {
+            Route::get('/', [FrontendController::class, 'index']);
+        });
+
+        return $this;
     }
 
     public function bootCommands(): self
     {
         $this->commands($this->commands);
+
         return $this;
     }
 
@@ -65,6 +78,7 @@ class TailwindUiThemeServiceProvider extends AddonServiceProvider
 
         $this->publishes([
             __DIR__.'/../resources/blueprints/' => resource_path('blueprints'),
+            __DIR__.'/../resources/fieldsets/' => resource_path('fieldsets'),
         ], 'rapidez-tailwind-ui-theme-blueprints');
 
         $this->publishes([

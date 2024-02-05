@@ -1,6 +1,6 @@
 title: Pages
 propagate: true
-template: rapidez-statamic::page
+template: tailwind-ui-theme::vendor.rapidez-statamic.page
 revisions: false
 route: '/{parent_uri}/{slug}'
 sort_dir: asc
