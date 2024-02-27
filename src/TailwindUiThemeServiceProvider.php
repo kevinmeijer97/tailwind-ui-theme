@@ -2,13 +2,15 @@
 
 namespace Rapidez\TailwindUiTheme;
 
-use Illuminate\Support\Facades\Route;
 use Rapidez\TailwindUiTheme\Commands\InstallCommand;
 use Statamic\Providers\AddonServiceProvider;
-use Statamic\Http\Controllers\FrontendController;
 
 class TailwindUiThemeServiceProvider extends AddonServiceProvider
 {
+    protected $routes = [
+        'web' => __DIR__.'/../routes/web.php',
+    ];
+
     protected $commands = [
         InstallCommand::class,
     ];
@@ -24,17 +26,7 @@ class TailwindUiThemeServiceProvider extends AddonServiceProvider
         parent::boot();
 
         $this->bootPublishables()
-            ->bootRoutes()
             ->bootCommands();
-    }
-
-    public function bootRoutes(): self
-    {
-        $this->registerWebRoutes(function () {
-            Route::get('/', [FrontendController::class, 'index']);
-        });
-
-        return $this;
     }
 
     public function bootCommands(): self
@@ -60,6 +52,8 @@ class TailwindUiThemeServiceProvider extends AddonServiceProvider
     {
         $this->loadViewsFrom(__DIR__.'/../resources/core-overwrites', 'rapidez');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'rapidez-tut');
+        $this->loadViewsFrom(__DIR__.'/../resources/views/vendor/rapidez-statamic', 'rapidez-statamic');
+        $this->loadViewsFrom(__DIR__.'/../resources/views/vendor/responsive-images', 'responsive-images');
 
         return $this;
     }
