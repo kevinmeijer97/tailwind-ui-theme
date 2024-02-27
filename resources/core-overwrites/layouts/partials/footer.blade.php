@@ -12,7 +12,7 @@
     <div class="pb-8 pt-16 sm:pt-24 lg:pt-32">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
             <div class="space-y-8">
-                @responsive($globals->brand->logo, ['class' => 'h-10 object-contain'])
+                @responsive($globals->brand->logo, ['class' => 'h-10 max-w-20 object-contain'])
                 @if ($globals->footer->message ?? '')
                     <div class="text-balance text-tut-inactive prose max-w-sm leading-6">
                         {!! $globals->footer->message !!}

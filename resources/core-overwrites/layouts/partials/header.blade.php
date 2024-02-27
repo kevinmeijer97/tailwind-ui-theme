@@ -9,7 +9,7 @@
             <div class="flex items-center gap-4">
                 @if ($globals->brand->logo ?? '')
                     <a href="{{ url('/') }}" aria-label="@lang('Go to home')">
-                        @responsive($globals->brand->logo, ['class' => 'h-10 object-contain'])
+                        @responsive($globals->brand->logo, ['class' => 'h-10 max-w-20 object-contain'])
                     </a>
                 @endif
                 <label for="navigation" class="cursor-pointer md:hidden">
